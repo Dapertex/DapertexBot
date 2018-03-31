@@ -5,7 +5,7 @@ const bot = new Discord.Client({
     disableEveryone: true
 });
 
-const token = JSON.parse(fs.readFileSync("./token", "utf8")).token;
+const token = JSON.parse(fs.readFileSync("./token.json", "utf8")).token;
 
 try {
     bot.token = token;
