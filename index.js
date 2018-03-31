@@ -76,5 +76,10 @@ bot.on("message", async (message) => {
     if (sender.bot || sender.id === bot.user.id) return;
 
     const prefix = "d!";
+
+    const command = msg.substring(prefix.length);
     const args = msg.substring(prefix.length).split(" ").slice(1);
+
+    let cmd = msg.startsWith(prefix) && bot.commands.get(command);
+    if (cmd) cmd.run;
 });
