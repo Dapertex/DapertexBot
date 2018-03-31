@@ -52,7 +52,7 @@ fs.readdir("./commands/", (err, files) => {
     jsFiltered.forEach((f, i) => {
         let props = require(`./commands/${f}`);
         bot.commands.set(props.help.name, props);
-        console.log(`${i + 1}: ${f} loaded!`);
+        console.log(`${i + 1}: ${props.help.name} loaded!`);
     });
 });
 
@@ -77,9 +77,9 @@ bot.on("message", async (message) => {
 
     const prefix = "d!";
 
-    const command = msg.substring(prefix.length);
+    const command = msg.substring(prefix.length).split(" ")[0];
     const args = msg.substring(prefix.length).split(" ").slice(1);
 
     let cmd = msg.startsWith(prefix) && bot.commands.get(command);
-    if (cmd) cmd.run;
+    if (cmd) cmd.run(bot, message, args);
 });
