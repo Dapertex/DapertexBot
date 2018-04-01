@@ -19,6 +19,7 @@ exports.run = async (bot, message, args) => { // Exported Async Function
             let nsfw = [];
             let moderation = [];
             let utilities = [];
+            let music = [];
 
             let js = files.filter(f => f.split(".").pop() === "js");
             js.forEach((f) => {
@@ -33,6 +34,8 @@ exports.run = async (bot, message, args) => { // Exported Async Function
                     utilities += `d!${commands.help.name}\n`;
                 } else if (commands.help.category.toLowerCase() == "moderation") {
                     moderation += `d!${commands.help.name}\n`;
+                } else if (commands.help.category.toLowerCase() == "music") {
+                    music += `d!${commands.help.name}\n`;
                 } else {
                     return;
                 }
@@ -49,6 +52,8 @@ exports.run = async (bot, message, args) => { // Exported Async Function
                 nsfw +
                 "\n[Moderation]\n" +
                 moderation +
+                "\n[Music]\n" +
+                music + 
                 "\n[For more information about a command, just enter `d!help (command)`]\n```"
             )
         });
