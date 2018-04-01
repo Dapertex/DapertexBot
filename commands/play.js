@@ -30,6 +30,6 @@ exports.run = async (bot, message, args) => {
         .on("end", () => {
             return message.reply(":white_check_mark: Song has ended!") && voiceChannel.leave();
         })
-        .on("error", (err) => { throw err; });
+        .on("error", (err) => { message.reply(`I couldn't connect to the voice channel due to this error: ${err.message}`); });
     dispatcher.setVolumeLogarithmic(5/5);
 }
